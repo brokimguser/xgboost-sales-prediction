@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Example</title>
+    <title>JSON File Display</title>
 </head>
 <body>
+
     <h1>JSON Data</h1>
-    <pre id="json"></pre>
+    <pre id="jsonDisplay">Loading...</pre>  <!-- Display the JSON data here -->
 
     <script>
-        // Fetch the JSON from your GitHub Pages URL
-        fetch('https://brokimguser.github.io/xgboost-sales-prediction/xgboost_model.json')
+        // Fetch the JSON data from the file
+        fetch('xgboost_model.json')
             .then(response => response.json())
             .then(data => {
-                // Display the data on the page
-                document.getElementById('json').textContent = JSON.stringify(data, null, 2);
+                // Display the JSON data as a string
+                document.getElementById('jsonDisplay').textContent = JSON.stringify(data, null, 2);
             })
-            .catch(error => console.error('Error loading the JSON:', error));
+            .catch(error => {
+                console.error('Error loading JSON:', error);
+                document.getElementById('jsonDisplay').textContent = 'Failed to load JSON';
+            });
     </script>
+
 </body>
 </html>
