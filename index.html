@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Example</title>
+</head>
+<body>
+    <h1>JSON Data</h1>
+    <pre id="json"></pre>
+
+    <script>
+        // Fetch the JSON from your GitHub Pages URL
+        fetch('https://your-username.github.io/your-repository-name/data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Display the data on the page
+                document.getElementById('json').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => console.error('Error loading the JSON:', error));
+    </script>
+</body>
+</html>
